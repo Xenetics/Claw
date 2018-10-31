@@ -1,0 +1,4 @@
+animate spawn doors
+animate collection door
+have prize spit out on hitting button again
+until then claw button will do nothing
