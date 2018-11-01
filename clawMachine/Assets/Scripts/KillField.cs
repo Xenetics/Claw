@@ -12,7 +12,7 @@ public class KillField : MonoBehaviour
         {
             if (otherCol.GetComponent<Ball>().grabbed || killAll)
             {
-                otherCol.GetComponent<Ball>().Destroy();
+                Destroy(otherCol.gameObject);
             }
         }
     }

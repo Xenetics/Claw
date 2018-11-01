@@ -9,13 +9,18 @@ public class MachineAnimation : MonoBehaviour
 
     [SerializeField] private Animator lidAnim;
 
+    [SerializeField] private Animator prizeGate;
+
     [SerializeField] private Animator leftSpawn;
     [SerializeField] private Animator rightSpawn;
 
 
 	private void Awake() 
 	{
-        ventAnims = vents.GetComponentsInChildren<Animator>();
+        if (vents)
+        {
+            ventAnims = vents.GetComponentsInChildren<Animator>();
+        }
     }
 	
 	private void Update () 
@@ -47,6 +52,16 @@ public class MachineAnimation : MonoBehaviour
     public void CloseLid()
     {
         lidAnim.SetBool("open", false);
+    }
+
+    public void OpenPrizeGate()
+    {
+        prizeGate.SetBool("open", true);
+    }
+
+    public void ClosePrizeGate()
+    {
+        prizeGate.SetBool("open", false);
     }
 
     public void OpenLeftSpawn()

@@ -31,7 +31,7 @@ public class ClawMachine : MonoBehaviour
     private List<System.Action> currentCallbacks;
     private float explodeStrength = 50;
     private float explodeRadius = 5;
-    private int initialBallCount = 45;
+    private int initialBallCount = 80;
 
     [Header("Animation")]
     [SerializeField] private Animator clawAnim;
@@ -67,12 +67,14 @@ public class ClawMachine : MonoBehaviour
                 anim.OpenLid();
                 break;
             case GameState.Spawning:
+                anim.OpenLeftSpawn();
+                anim.OpenRightSpawn();
                 spawner.Spawn(initialBallCount);
                 break;
             case GameState.Playing:
                 break;
             case GameState.Collecting:
-                
+                anim.OpenPrizeGate();
                 break;
         }
     }
@@ -160,6 +162,7 @@ public class ClawMachine : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(clawParent.transform.position, Vector3.down, out hit, LayerMask.NameToLayer("Ball")))
         {
+            Debug.DrawLine(clawParent.transform.position, hit.collider.ClosestPoint(clawParent.transform.position), Color.cyan, 10.0f);
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ball"))
             {
                 target = hit.collider.gameObject;
@@ -176,7 +179,10 @@ public class ClawMachine : MonoBehaviour
             Explode(target);
             target.GetComponent<Rigidbody>().isKinematic = true;
             target.GetComponent<Ball>().grabbed = true;
-            if(target.GetComponent<Ball>().ballType == Ball.eBallType.prize)
+            target.layer = LayerMask.NameToLayer("Collected");
+            Vector3 smallScale = target.transform.localScale;
+            target.transform.localScale = new Vector3(smallScale.x * 0.8f, smallScale.y * 0.8f, smallScale.z * 0.8f);
+            if (target.GetComponent<Ball>().ballType == Ball.eBallType.prize)
             {
                 spawner.PrizeWon();
             }
@@ -328,7 +334,8 @@ public class ClawMachine : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(_gameObject.transform.position, explodeRadius, ~LayerMask.NameToLayer("Ball"));
         foreach (Collider col in hits)
         {
-            if (col.gameObject != _gameObject)
+            Ball ball = col.gameObject.GetComponent<Ball>();
+            if (col.gameObject != _gameObject && ball)
             {
                 col.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explodeStrength, _gameObject.transform.position, explodeRadius, explodeStrength * 0.25f, ForceMode.Impulse);
             }

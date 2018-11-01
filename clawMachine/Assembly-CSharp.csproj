@@ -65,9 +65,11 @@
     <Compile Include="Assets\Scripts\BallSpawner.cs" />
     <Compile Include="Assets\Scripts\BetterBtn.cs" />
     <Compile Include="Assets\Scripts\ClawMachine.cs" />
+    <Compile Include="Assets\Scripts\CollectionTrigger.cs" />
     <Compile Include="Assets\Scripts\KillField.cs" />
     <Compile Include="Assets\Scripts\LidOpened.cs" />
     <Compile Include="Assets\Scripts\MachineAnimation.cs" />
+    <Compile Include="Assets\Scripts\PlayTrigger.cs" />
     <Compile Include="Assets\Scripts\SyncRotToPos.cs" />
     <Compile Include="Assets\Scripts\TestClawMachine.cs" />
     <Reference Include="UnityEditor.StandardEvents">

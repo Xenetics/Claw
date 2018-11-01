@@ -7,9 +7,4 @@ public class Ball : MonoBehaviour
     public enum eBallType { plain, prize }
     public eBallType ballType;
     public bool grabbed = false;
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
 }

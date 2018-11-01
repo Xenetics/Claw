@@ -16,12 +16,12 @@ public class BallSpawner : MonoBehaviour
     private int prizesOut = 0;
     private int prizesWon = 0;
     private float prizeChance = 0.05f;
-    private float spawnShootPower = 10f;
+    private float spawnShootPower = 1f;
 
     // Rapid Spawn
     private bool massSpawn = false;
     private int amountToSpawn;
-    private float spawnInterval = 0.5f;
+    private float spawnInterval = 0.2f;
     private float timer = 0;
 
     private void Awake()
