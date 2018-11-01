@@ -42,6 +42,8 @@ public class ClawMachine : MonoBehaviour
     private BallSpawner spawner;
     private MachineAnimation anim;
 
+    [SerializeField] private SpotlightManager light;
+
     private void Awake ()
     {
         if (clawBtn)
@@ -54,6 +56,7 @@ public class ClawMachine : MonoBehaviour
         ropeLength = Vector3.Distance(rope.transform.position, claw.transform.position);
         spawner = GetComponent<BallSpawner>();
         anim = GetComponent<MachineAnimation>();
+        SetState(GameState.Pregame);
     }
 
     public void SetState(GameState newState)
@@ -62,12 +65,15 @@ public class ClawMachine : MonoBehaviour
         switch (newState)
         {
             case GameState.Pregame:
+                light.MainSpotLight();
                 break;
             case GameState.Opening:
                 anim.OpenVents();
                 anim.OpenLid();
                 break;
             case GameState.Spawning:
+                light.EnableInteriorLight();
+                light.EnableStrobeInteriorLight(true, 1f);
                 anim.OpenLeftSpawn();
                 anim.OpenRightSpawn();
                 spawner.Spawn(initialBallCount);
@@ -76,6 +82,7 @@ public class ClawMachine : MonoBehaviour
                 anim.CloseVents();
                 break;
             case GameState.Collecting:
+                light.EnableStrobeInteriorLight(true, 0.2f);
                 anim.OpenPrizeGate();
                 break;
         }
@@ -329,6 +336,7 @@ public class ClawMachine : MonoBehaviour
             spawner.Spawn();
         }
         success = false;
+        light.EnableStrobeInteriorLight(true, 1f);
     }
 
     private void Explode(GameObject _gameObject)

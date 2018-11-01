@@ -6187,6 +6187,7 @@ MonoBehaviour:
   endPoint: {fileID: 1553695210627640}
   clawAnim: {fileID: 95695518111481096}
   rope: {fileID: 1099066756829444}
+  light: {fileID: 0}
 --- !u!114 &114662746278617832
 MonoBehaviour:
   m_ObjectHideFlags: 1
