@@ -786,6 +786,96 @@ Prefab:
       propertyPath: clawBtn
       value: 
       objectReference: {fileID: 1381423665}
+    - target: {fileID: 198922036892509290, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198018580774123374, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198445389972504126, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198707912751423254, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365086767798748, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198527592336681736, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198908816956877856, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198807327342780202, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198625657625835032, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198922036892509290, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198018580774123374, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198445389972504126, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198707912751423254, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365086767798748, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198527592336681736, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198908816956877856, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198807327342780202, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198625657625835032, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab543165bf70454c8d5a723d6652d6c, type: 2}
   m_IsPrefabAsset: 0

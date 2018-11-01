@@ -64,6 +64,7 @@ public class ClawMachine : MonoBehaviour
             case GameState.Pregame:
                 break;
             case GameState.Opening:
+                anim.OpenVents();
                 anim.OpenLid();
                 break;
             case GameState.Spawning:
@@ -72,6 +73,7 @@ public class ClawMachine : MonoBehaviour
                 spawner.Spawn(initialBallCount);
                 break;
             case GameState.Playing:
+                anim.CloseVents();
                 break;
             case GameState.Collecting:
                 anim.OpenPrizeGate();
