@@ -8,7 +8,7 @@ public class KillField : MonoBehaviour
 
     private void OnTriggerEnter(Collider otherCol)
     {
-        if (otherCol.gameObject.layer == LayerMask.NameToLayer("Ball"))
+        if (otherCol.gameObject.layer == LayerMask.NameToLayer("Ball") || otherCol.gameObject.layer == LayerMask.NameToLayer("Collected"))
         {
             if (otherCol.GetComponent<Ball>().grabbed || killAll)
             {
