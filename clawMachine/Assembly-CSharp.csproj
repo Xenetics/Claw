@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BetterBtn.cs" />
     <Compile Include="Assets\Scripts\ClawMachine.cs" />
     <Compile Include="Assets\Scripts\CollectionTrigger.cs" />
+    <Compile Include="Assets\Scripts\FireSmoke.cs" />
     <Compile Include="Assets\Scripts\KillField.cs" />
     <Compile Include="Assets\Scripts\LidOpened.cs" />
     <Compile Include="Assets\Scripts\MachineAnimation.cs" />
