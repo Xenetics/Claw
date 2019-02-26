@@ -773,6 +773,16 @@ Prefab:
       propertyPath: light
       value: 
       objectReference: {fileID: 992759430}
+    - target: {fileID: 114129410123043432, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: odds
+      value: 0.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129410123043432, guid: 0ab543165bf70454c8d5a723d6652d6c,
+        type: 2}
+      propertyPath: useOdds
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab543165bf70454c8d5a723d6652d6c, type: 2}
   m_IsPrefabAsset: 0

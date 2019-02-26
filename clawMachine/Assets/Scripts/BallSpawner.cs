@@ -11,8 +11,13 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private GameObject ballBucket;
     [SerializeField] private Transform leftSpawn;
     [SerializeField] private Transform rightSpawn;
+    [SerializeField] private bool usePrizeBallTexture;
+    public bool useOdds = false;
+    public float odds = 0.075f;
+    [System.NonSerialized] public int attempt = 0;
+    public int maxAttempts = 3;
     private bool spawnRight = false;
-    private int totalPrizes = 20;
+    private int totalPrizes = 1;
     private int prizesOut = 0;
     private int prizesWon = 0;
     private float prizeChance = 0.05f;
@@ -63,12 +68,18 @@ public class BallSpawner : MonoBehaviour
         spawnRight = !spawnRight;
         GameObject newBall = Instantiate(ballPrefab, spawnPoint.position, Quaternion.identity, ballBucket.transform);
 
-        float roll = ((prizesOut - prizesWon) == 0) ? (0.0f) : (Random.Range(0.0f, 1.0f));
-        if (roll < prizeChance && prizesOut < totalPrizes)
+        if (useOdds)
         {
-            newBall.GetComponent<Ball>().ballType = Ball.eBallType.prize;
-            newBall.GetComponentInChildren<MeshRenderer>().material = prizeMat;
-            prizesOut++;
+            float roll = ((prizesOut - prizesWon) == 0) ? (0.0f) : (Random.Range(0.0f, 1.0f));
+            if (roll < prizeChance && prizesOut < totalPrizes)
+            {
+                newBall.GetComponent<Ball>().ballType = Ball.eBallType.prize;
+                if (usePrizeBallTexture)
+                {
+                    newBall.GetComponentInChildren<MeshRenderer>().material = prizeMat;
+                }
+                prizesOut++;
+            }
         }
         else
         {
@@ -80,5 +91,15 @@ public class BallSpawner : MonoBehaviour
     public void PrizeWon()
     {
         prizesWon++;
+    }
+
+    public int GetPrizeTotal()
+    {
+        return totalPrizes;
+    }
+
+    public int GetPrizesWon()
+    {
+        return prizesWon;
     }
 }

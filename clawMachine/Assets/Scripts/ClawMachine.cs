@@ -31,7 +31,7 @@ public class ClawMachine : MonoBehaviour
     private List<System.Action> currentCallbacks;
     private float explodeStrength = 50;
     private float explodeRadius = 5;
-    private int initialBallCount = 80;
+    private int initialBallCount = 120;
 
     [Header("Animation")]
     [SerializeField] private Animator clawAnim;
@@ -42,6 +42,7 @@ public class ClawMachine : MonoBehaviour
     private BallSpawner spawner;
     private MachineAnimation anim;
 
+    private bool chickenDinner = false;
     [SerializeField] private SpotlightManager light;
 
     private void Awake ()
@@ -82,7 +83,11 @@ public class ClawMachine : MonoBehaviour
                 anim.CloseVents();
                 break;
             case GameState.Collecting:
-                light.EnableStrobeInteriorLight(true, 0.2f);
+                if (chickenDinner)
+                {
+                    Debug.Log("Win");
+                    light.EnableStrobeInteriorLight(true, 0.1f);
+                }
                 anim.OpenPrizeGate();
                 break;
         }
@@ -169,12 +174,27 @@ public class ClawMachine : MonoBehaviour
     private void AquireTarget()
     {
         RaycastHit hit;
-        if(Physics.Raycast(clawParent.transform.position, Vector3.down, out hit, LayerMask.NameToLayer("Ball")))
+        chickenDinner = false;
+        if (Physics.Raycast(clawParent.transform.position, Vector3.down, out hit, LayerMask.NameToLayer("Ball")))
         {
             Debug.DrawLine(clawParent.transform.position, hit.collider.ClosestPoint(clawParent.transform.position), Color.cyan, 10.0f);
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ball"))
             {
                 target = hit.collider.gameObject;
+                if(spawner.useOdds && spawner.GetPrizesWon() == 0 && spawner.attempt < spawner.maxAttempts)
+                {
+                    float roll = Random.Range(0.0f, 1.0f);
+                    Debug.Log("Roll " + roll);
+                    if (roll < spawner.odds * spawner.attempt)
+                    {
+                        target.GetComponent<Ball>().ballType = Ball.eBallType.prize;
+                        chickenDinner = true;
+                    }
+                    else
+                    {
+                        spawner.attempt++;
+                    }
+                }
             }
         }
     }
