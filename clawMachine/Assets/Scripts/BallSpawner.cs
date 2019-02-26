@@ -17,10 +17,10 @@ public class BallSpawner : MonoBehaviour
     [System.NonSerialized] public int attempt = 0;
     public int maxAttempts = 3;
     private bool spawnRight = false;
-    private int totalPrizes = 1;
+    [SerializeField] private int totalPrizes = 1;
     private int prizesOut = 0;
     private int prizesWon = 0;
-    private float prizeChance = 0.05f;
+    private float prizeChance = 0.1f;
     private float spawnShootPower = 1f;
 
     // Rapid Spawn
@@ -43,7 +43,14 @@ public class BallSpawner : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer >= spawnInterval)
                 {
-                    Spawn();
+                    if (totalPrizes - prizesOut == amountToSpawn)
+                    {
+                        Spawn(true);
+                    }
+                    else
+                    {
+                        Spawn();
+                    }
                     timer = 0;
                     amountToSpawn--;
                 }
@@ -62,16 +69,16 @@ public class BallSpawner : MonoBehaviour
         amountToSpawn = amount;
     }
 
-    public void Spawn()
+    public void Spawn(bool prizeBall = false)
     {
         Transform spawnPoint = (!spawnRight) ? (leftSpawn) : (rightSpawn);
         spawnRight = !spawnRight;
         GameObject newBall = Instantiate(ballPrefab, spawnPoint.position, Quaternion.identity, ballBucket.transform);
 
-        if (useOdds)
+        if (!useOdds)
         {
             float roll = ((prizesOut - prizesWon) == 0) ? (0.0f) : (Random.Range(0.0f, 1.0f));
-            if (roll < prizeChance && prizesOut < totalPrizes)
+            if ((roll < prizeChance && prizesOut < totalPrizes) || prizeBall)
             {
                 newBall.GetComponent<Ball>().ballType = Ball.eBallType.prize;
                 if (usePrizeBallTexture)
